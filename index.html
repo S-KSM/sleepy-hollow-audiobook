@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Legend of Sleepy Hollow: An Illustrated Summary (Illustrated)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --bg: #f8f5f0;
+    --bg-card: #ffffff;
+    --text: #1a1a2e;
+    --text-muted: #6b7280;
+    --accent: #6366f1;
+    --accent-hover: #4f46e5;
+    --border: #e5e7eb;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.12);
+    --radius: 16px;
+    --cover-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+[data-theme="dark"] {
+    --bg: #0f0f1a;
+    --bg-card: #1a1a2e;
+    --text: #e5e5e5;
+    --text-muted: #9ca3af;
+    --accent: #818cf8;
+    --accent-hover: #a5b4fc;
+    --border: #2d2d44;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.4);
+    --cover-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.8;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* -- Top bar -- */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: color-mix(in srgb, var(--bg-card) 85%, transparent);
+}
+.topbar-title {
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.theme-toggle {
+    background: var(--border);
+    border: none;
+    border-radius: 999px;
+    width: 48px;
+    height: 28px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+.theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+[data-theme="dark"] .theme-toggle::after {
+    transform: translateX(20px);
+}
+.theme-label {
+    font-size: 0.75em;
+    color: var(--text-muted);
+    margin-right: 8px;
+}
+
+/* -- Hero / Cover -- */
+.hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+}
+.cover {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--cover-shadow);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.cover:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 28px 70px rgba(0,0,0,0.3);
+}
+.book-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 3em;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    background: linear-gradient(135deg, var(--accent), var(--text));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.book-subtitle {
+    font-size: 1.1em;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 0 0 16px;
+}
+.book-meta {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+}
+
+/* -- Chapter navigation -- */
+.chapter-nav {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+}
+.chapter-nav-title {
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+.chapter-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+}
+.chapter-nav-list a {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.82em;
+    font-weight: 500;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.chapter-nav-list a:hover {
+    background: color-mix(in srgb, var(--accent) 20%, transparent);
+    transform: translateY(-1px);
+}
+
+/* -- Chapters -- */
+.chapters {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+.chapter {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin: 0 0 48px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.chapter:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+.chapter-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.chapter-body {
+    padding: 32px 36px 36px;
+}
+.chapter-number {
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.chapter-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5em;
+    font-weight: 600;
+    margin: 0 0 20px;
+    line-height: 1.3;
+}
+.chapter-summary p {
+    margin: 0 0 1.2em;
+    color: var(--text);
+    line-height: 1.85;
+}
+.chapter-summary p:last-child {
+    margin-bottom: 0;
+}
+audio {
+    width: 100%;
+    margin: 20px 0 0;
+    border-radius: 8px;
+}
+
+/* -- Back cover -- */
+.back-cover {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 60px auto;
+    border-radius: var(--radius);
+    box-shadow: var(--cover-shadow);
+}
+
+/* -- Footer -- */
+footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    text-align: center;
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* -- Responsive -- */
+@media (max-width: 600px) {
+    .book-title { font-size: 2em; }
+    .chapter-body { padding: 24px 20px 28px; }
+    .hero { padding: 60px 16px 40px; }
+    .cover { max-width: 280px; }
+}
+    </style>
+</head>
+<body>
+<div class="topbar">
+    <span class="topbar-title">The Legend of Sleepy Hollow &middot; Illustrated Edition</span>
+    <div style="display:flex;align-items:center;">
+        <span class="theme-label">Theme</span>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"></button>
+    </div>
+</div>
+<div class="hero">
+    <img class="cover" src="images_cinematic/cover.png" alt="The Legend of Sleepy Hollow cover">
+    <h1 class="book-title">The Legend of Sleepy Hollow</h1>
+    <p class="book-subtitle">An Illustrated Summary</p>
+    <p class="book-meta">Illustrated Edition &bull; 2 Chapters</p>
+</div>
+<nav class="chapter-nav">
+    <div class="chapter-nav-title">Chapters</div>
+    <ul class="chapter-nav-list">
+        <li><a href="#chapter-1">CASTLE OF INDOLENCE.</a></li>
+        <li><a href="#chapter-2">FOUND IN THE HANDWRITING OF MR. KNICKERBOCKER.</a></li>
+    </ul>
+</nav>
+<div class="chapters">
+    <section class="chapter" id="chapter-1">
+        <img class="chapter-image" src="images_cinematic/chapter_1.png" alt="CASTLE OF INDOLENCE. illustration">
+        <div class="chapter-body">
+            <div class="chapter-number">Chapter 1</div>
+            <h2 class="chapter-title">CASTLE OF INDOLENCE.</h2>
+            <div class="chapter-summary">
+            </div>
+        </div>
+    </section>
+    <section class="chapter" id="chapter-2">
+        <img class="chapter-image" src="images_cinematic/chapter_2.png" alt="FOUND IN THE HANDWRITING OF MR. KNICKERBOCKER. illustration">
+        <div class="chapter-body">
+            <div class="chapter-number">Chapter 2</div>
+            <h2 class="chapter-title">FOUND IN THE HANDWRITING OF MR. KNICKERBOCKER.</h2>
+            <div class="chapter-summary">
+            </div>
+        </div>
+    </section>
+</div>
+<img class="back-cover" src="images_cinematic/back_cover.png" alt="Back cover">
+<footer>Generated by Book Transformer</footer>
+<script>(function() {
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    if (saved) html.setAttribute('data-theme', saved);
+    else if (window.matchMedia('(prefers-color-scheme: dark)').matches) html.setAttribute('data-theme', 'dark');
+    toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+})();</script>
+</body>
+</html>
